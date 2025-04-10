@@ -1,0 +1,15 @@
+.profile-page {
+    padding: 20px;
+  }
+  
+  .profile-page h1 {
+    color: #371cea;
+    margin-bottom: 20px;
+  }
+  
+  .profile-info {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }

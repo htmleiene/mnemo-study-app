@@ -1,0 +1,28 @@
+.home-page {
+    padding-bottom: 80px;
+  }
+  
+  .welcome-section {
+    margin-bottom: 30px;
+  }
+  
+  .welcome-section h1 {
+    color: #371cea;
+    margin-bottom: 10px;
+  }
+  
+  .decks-section {
+    margin-bottom: 30px;
+  }
+  
+  .decks-section h2 {
+    color: #190b79;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  .decks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+  }

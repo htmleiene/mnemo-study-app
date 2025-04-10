@@ -1,0 +1,73 @@
+.analytics-page {
+    padding: 20px;
+  }
+  
+  .time-range-selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .time-range-selector button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .time-range-selector button.active {
+    background: #371cea;
+    color: white;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .chart-container {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .deck-performance {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .deck-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .deck-name {
+    flex: 1;
+  }
+  
+  .progress-bar {
+    flex: 2;
+    height: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    margin: 0 10px;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    border-radius: 5px;
+  }
+  
+  .deck-percentage {
+    width: 50px;
+    text-align: right;
+  }
