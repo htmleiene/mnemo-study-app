@@ -1,6 +1,6 @@
 import { getFromStorage, saveToStorage } from '../utils/storage';
 
-const COURSES_KEY = 'app_courses';
+// const COURSES_KEY = 'app_courses';
 const USER_COURSES_KEY = 'user_courses';
 
 // Dados mockados - em produção viriam de uma API

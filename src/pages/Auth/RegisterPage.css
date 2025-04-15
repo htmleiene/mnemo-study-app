@@ -1,0 +1,543 @@
+/* Variáveis de design system */
+:root {
+    --primary: #4285f4;
+    --primary-light: #e8f0fe;
+    --primary-dark: #3367d6;
+    --secondary: #34a853;
+    --secondary-light: #e6f4ea;
+    --accent: #ea4335;
+    --accent-light: #fce8e6;
+    --light: #f8f9fa;
+    --lighter: #ffffff;
+    --dark: #202124;
+    --darker: #000000;
+    --gray: #5f6368;
+    --gray-light: #dadce0;
+    --gray-lighter: #f1f3f4;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+  }
+  
+  /* Reset e estilos base */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--light);
+  }
+  
+  /* Container principal */
+  .register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: var(--light);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .register-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, var(--primary-light) 0%, transparent 70%);
+    opacity: 0.2;
+    z-index: 0;
+  }
+  
+  /* Cabeçalho */
+  .register-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeInDown 0.6s ease-out;
+  }
+  
+  .register-logo {
+    width: 120px;
+    height: auto;
+    margin: 0 auto 0.5rem;
+    display: block;
+    filter: drop-shadow(var(--shadow-sm));
+    transition: var(--transition);
+  }
+  
+  .register-logo:hover {
+    transform: scale(1.05);
+  }
+  
+  .register-header h1 {
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.5px;
+  }
+  
+  .register-header p {
+    color: var(--gray);
+    font-size: 1.05rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  /* Formulário */
+  .register-form {
+    background-color: var(--lighter);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    width: 100%;
+    max-width: 440px;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.6s ease-out;
+    border: 1px solid var(--gray-light);
+  }
+  
+  /* Grupos de formulário */
+  .form-group {
+    margin-bottom: 1.75rem;
+    position: relative;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 0.95rem;
+  }
+  
+  /* Controles do formulário */
+  .form-control {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--gray-light);
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    color: var(--dark);
+    transition: var(--transition);
+    background-color: var(--lighter);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .form-control::placeholder {
+    color: var(--gray-light);
+  }
+  
+  .form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
+  }
+  
+  .form-control.error {
+    border-color: var(--accent);
+    background-color: var(--accent-light);
+  }
+  
+  .error-message {
+    color: var(--accent);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: block;
+    font-weight: 500;
+  }
+  
+  /* Seletor de cursos */
+  .course-selection-title {
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+  }
+  
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .course-option {
+    background-color: var(--gray-lighter);
+    padding: 1.25rem;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .course-option:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-light);
+  }
+  
+  .course-option.selected {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary-dark);
+  }
+  
+  .course-option.selected .course-info p {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .course-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+  }
+  
+  .course-info h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  
+  .course-info p {
+    margin: 0.25rem 0 0;
+    color: var(--gray);
+    font-size: 0.85rem;
+    transition: var(--transition);
+  }
+  
+  /* Botão de registro */
+  .register-button {
+    width: 100%;
+    padding: 1.1rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .register-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    opacity: 0.95;
+  }
+  
+  .register-button:active {
+    transform: translateY(0);
+  }
+  
+  .register-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+  
+  /* Rodapé */
+  .register-footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--gray);
+  }
+  
+  .register-footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+  }
+  
+  .register-footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition);
+  }
+  
+  .register-footer a:hover::after {
+    width: 100%;
+  }
+  
+  /* Mensagem de erro */
+  .register-error {
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 1.75rem;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 500;
+    border: 1px solid rgba(234, 67, 53, 0.3);
+  }
+  
+  /* Select personalizado */
+  .select-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+  }
+  
+  /* Animações */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsividade */
+  @media (max-width: 480px) {
+    .register-container {
+      padding: 1.5rem;
+    }
+    
+    .register-form {
+      padding: 1.75rem;
+    }
+    
+    .courses-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .register-header h1 {
+      font-size: 1.75rem;
+    }
+  }
+  /* RegisterPage.css */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.register-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.register-logo {
+    width: 120px;
+    margin-bottom: 1.5rem;
+}
+
+.register-card h1 {
+    color: #371cea;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.register-card p.subtitle {
+    color: #666;
+    margin-bottom: 1.8rem;
+    font-size: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #190b79;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #371cea;
+}
+
+.form-control.error {
+    border-color: #ea4335;
+}
+
+.error-message {
+    color: #ea4335;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    display: block;
+}
+
+.course-selection-title {
+    font-weight: 500;
+    color: #190b79;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.course-option {
+    background-color: #f1f3f4;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+}
+
+.course-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-option.selected {
+    background-color: #371cea;
+    color: white;
+    border-color: #4a0395;
+}
+
+.course-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.course-info p {
+    margin: 0.25rem 0 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.course-option.selected .course-info p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.register-button {
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, #371cea, #4a0395);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: opacity 0.3s;
+}
+
+.register-button:hover {
+    opacity: 0.9;
+}
+
+.register-button:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.register-footer {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.register-footer a {
+    color: #371cea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-error {
+    color: #ea4335;
+    background: rgba(234, 67, 53, 0.1);
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.select-control {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    background-color: white;
+}
+
+.select-control:focus {
+    outline: none;
+    border-color: #371cea;
+}

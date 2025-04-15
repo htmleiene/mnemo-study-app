@@ -1,5 +1,5 @@
 import { getFromStorage } from '../utils/storage';
-import { generateStudyPlan } from './ai';
+// import { generateStudyPlan } from './ai';
 
 const STUDY_DATA_KEY = 'study_analytics';
 

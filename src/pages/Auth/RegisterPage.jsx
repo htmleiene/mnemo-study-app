@@ -110,13 +110,14 @@ const RegisterPage = () => {
 
   return (
     <div className="register-container">
-      <div className="register-header">
-        <img src="/logo.png" alt="MNemo Logo" className="register-logo" />
-        <h1>Crie sua conta</h1>
-        <p>Personalize sua experiência de estudo</p>
-      </div>
-
       <div className="register-form">
+        <div className="register-header">
+          <img src="/logo.png" alt="MNemo Logo" className="register-logo" />
+          <h1>Crie sua conta</h1>
+          <p>Personalize sua experiência de estudo</p>
+        </div>
+
+
         {errors.general && (
           <div className="register-error">{errors.general}</div>
         )}

@@ -6,6 +6,7 @@ import CoursesPage from './pages/Courses/CoursesPage';
 import ProfilePage from './pages/Profile/ProfilePage';
 import AnalyticsPage from './pages/Analytics/AnalyticsPage';
 import LoginPage from './pages/Login/LoginPage';
+import RegisterPage from './pages/Auth/RegisterPage';
 import NavBar from './components/NavBar/NavBar';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={!user ? <LoginPage /> : <Navigate to="/" />} />
+        <Route path="/register" element={!user ? <RegisterPage /> : <Navigate to="/" />} />
         <Route path="/" element={user ? <HomePage /> : <Navigate to="/login" />} />
         <Route path="/study/:deckId" element={user ? <StudyPage /> : <Navigate to="/login" />} />
         <Route path="/courses" element={user ? <CoursesPage /> : <Navigate to="/login" />} />
