@@ -19,6 +19,7 @@ function App() {
         <Route path="/register" element={!user ? <RegisterPage /> : <Navigate to="/" />} />
         <Route path="/" element={user ? <HomePage /> : <Navigate to="/login" />} />
         <Route path="/study/:deckId" element={user ? <StudyPage /> : <Navigate to="/login" />} />
+        <Route path="/study" element={<StudyPage />} />
         <Route path="/courses" element={user ? <CoursesPage /> : <Navigate to="/login" />} />
         <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
         <Route path="/analytics" element={user ? <AnalyticsPage /> : <Navigate to="/login" />} />

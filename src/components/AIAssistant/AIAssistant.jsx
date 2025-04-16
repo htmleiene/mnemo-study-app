@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { fetchAIExplanation } from '../../services/ai';
+import { generateFlashcardsFromAI } from '../../services/ai';
 import './AIAssistant.css';
 
 const AIAssistant = ({ concept, onClose }) => {
@@ -9,10 +9,15 @@ const AIAssistant = ({ concept, onClose }) => {
   const getExplanation = async () => {
     setIsLoading(true);
     try {
-      const result = await fetchAIExplanation(concept);
-      setExplanation(result.explanation);
+      // Aqui você simula a IA gerando flashcards sobre o conceito
+      const flashcards = await generateFlashcardsFromAI(concept);
+      if (flashcards.length > 0) {
+        setExplanation(flashcards[0].back); // Pega o "back" do primeiro flashcard como explicação
+      } else {
+        setExplanation('Nenhuma explicação encontrada.');
+      }
     } catch (error) {
-      console.error('Error getting AI explanation:', error);
+      console.error('Erro ao obter explicação da IA:', error);
       setExplanation('Não foi possível obter a explicação no momento.');
     } finally {
       setIsLoading(false);

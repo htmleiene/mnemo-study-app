@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom'; // Certifique-se de importar o Link aqui
 import { useAuth } from '../../contexts/AuthContext';
 import './LoginPage.css';
 
@@ -10,8 +10,14 @@ const LoginPage = () => {
   });
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth(); // Assumindo que temos apenas login agora
+  const { login, currentUser } = useAuth();
   const navigate = useNavigate();
+
+  // Redirecionamento se o usuário já estiver logado
+  if (currentUser) {
+    navigate('/');
+    return null;
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
