@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './contexts/AuthContext';
 import HomePage from './pages/Home/HomePage';
@@ -10,21 +11,36 @@ import RegisterPage from './pages/Auth/RegisterPage';
 import NavBar from './components/NavBar/NavBar';
 
 function App() {
-  const { user } = useAuth();
+  const { currentUser } = useAuth(); // Certifique-se de que você está pegando 'currentUser' aqui
 
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={!user ? <LoginPage /> : <Navigate to="/" />} />
-        <Route path="/register" element={!user ? <RegisterPage /> : <Navigate to="/" />} />
-        <Route path="/" element={user ? <HomePage /> : <Navigate to="/login" />} />
-        <Route path="/study/:deckId" element={user ? <StudyPage /> : <Navigate to="/login" />} />
-        <Route path="/study" element={<StudyPage />} />
-        <Route path="/courses" element={user ? <CoursesPage /> : <Navigate to="/login" />} />
-        <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" />} />
-        <Route path="/analytics" element={user ? <AnalyticsPage /> : <Navigate to="/login" />} />
+        {/* Página de Login: Se o usuário já estiver logado, redireciona para a home */}
+        <Route path="/login" element={!currentUser ? <LoginPage /> : <Navigate to="/" />} />
+
+        {/* Página de Registro: Se o usuário já estiver logado, redireciona para a home */}
+        <Route path="/register" element={!currentUser ? <RegisterPage /> : <Navigate to="/" />} />
+
+        {/* Página Inicial (Home): Se o usuário não estiver logado, redireciona para o login */}
+        <Route path="/" element={currentUser ? <HomePage /> : <Navigate to="/login" />} />
+
+        {/* Página de Estudo (Study): Se o usuário não estiver logado, redireciona para o login */}
+        <Route path="/study/:deckId" element={currentUser ? <StudyPage /> : <Navigate to="/login" />} />
+        <Route path="/study" element={currentUser ? <StudyPage /> : <Navigate to="/login" />} />
+
+        {/* Página de Cursos: Se o usuário não estiver logado, redireciona para o login */}
+        <Route path="/courses" element={currentUser ? <CoursesPage /> : <Navigate to="/login" />} />
+
+        {/* Página de Perfil: Se o usuário não estiver logado, redireciona para o login */}
+        <Route path="/profile" element={currentUser ? <ProfilePage /> : <Navigate to="/login" />} />
+
+        {/* Página de Análises: Se o usuário não estiver logado, redireciona para o login */}
+        <Route path="/analytics" element={currentUser ? <AnalyticsPage /> : <Navigate to="/login" />} />
       </Routes>
-      {user && <NavBar />}
+
+      {/* Exibe o NavBar apenas se o usuário estiver logado */}
+      {currentUser && <NavBar />}
     </Router>
   );
 }

@@ -15,7 +15,6 @@ const RegisterPage = () => {
 
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const { register } = useAuth();
   const navigate = useNavigate();
 
   const courses = [
@@ -42,8 +41,9 @@ const RegisterPage = () => {
       name: 'Ciência da Computação',
       university: 'Universidade Federal de Minas Gerais (UFMG)',
       icon: 'fa-laptop-code'
-    }
-  ];
+      }
+    ];
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,7 +51,7 @@ const RegisterPage = () => {
       ...prev,
       [name]: value
     }));
-
+  
     if (name === 'studyPurpose') {
       setFormData(prev => ({
         ...prev,
@@ -59,8 +59,8 @@ const RegisterPage = () => {
         course: ''
       }));
     }
-  };
-
+  }; // <- agora está fechando corretamente
+  
   const handleCourseSelect = (course, university) => {
     setFormData(prev => ({
       ...prev,
@@ -68,6 +68,7 @@ const RegisterPage = () => {
       university
     }));
   };
+  
 
   const validateForm = () => {
     const newErrors = {};
@@ -86,27 +87,40 @@ const RegisterPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
-
     setIsLoading(true);
-    try {
-      await register(
-        formData.email,
-        formData.password,
-        formData.name,
-        {
-          studyPurpose: formData.studyPurpose,
-          university: formData.university,
-          course: formData.course
-        }
-      );
-      navigate('/');
-    } catch (error) {
-      setErrors({ general: error.message });
-    } finally {
+  
+    if (!validateForm()) {
       setIsLoading(false);
+      return;
     }
+  
+    const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+  
+    const alreadyExists = existingUsers.some(user => user.email === formData.email);
+    if (alreadyExists) {
+      setErrors({ general: 'Usuário já cadastrado' });
+      setIsLoading(false);
+      return;
+    }
+  
+    const newUser = {
+      email: formData.email,
+      password: formData.password,
+      name: formData.name,
+      studyPurpose: formData.studyPurpose,
+      university: formData.university,
+      course: formData.course
+    };
+  
+    const updatedUsers = [...existingUsers, newUser];
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+  
+    // (Opcional) Salvar usuário logado
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+  
+    navigate('/'); // Vai para a home
   };
+  
 
   return (
     <div className="register-container">
